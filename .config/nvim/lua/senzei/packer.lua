@@ -77,6 +77,14 @@ return require('packer').startup(function(use)
   }
 
   use {
+    's1n7ax/nvim-window-picker',
+    tag = 'v1.*',
+    config = function()
+        require'window-picker'.setup()
+    end,
+  }
+
+  use {
     "folke/which-key.nvim",
     config = function()
         vim.o.timeout = true
@@ -95,12 +103,12 @@ return require('packer').startup(function(use)
   }
 
   use {
-    "nvim-neo-tree/neo-tree.nvim",
-    branch = "v2.x",
+    "nvim-tree/nvim-tree.lua",
     requires = { 
       "nvim-lua/plenary.nvim",
       "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
       "MunifTanjim/nui.nvim",
+      's1n7ax/nvim-window-picker',
     }
   }
 

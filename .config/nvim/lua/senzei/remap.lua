@@ -40,7 +40,17 @@ vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 -- Open Neotree
 vim.keymap.set('n', '<leader>T', ':Neotree<CR>', {silent = true})
 
--- Shorhand for source command
+-- Shorthand for source command
 vim.keymap.set("n", "<leader><leader>", function()
     vim.cmd("so")
 end)
+
+-- Split Panes
+vim.keymap.set("n", "<leader>vs" , ":vsplit<CR>")
+vim.keymap.set("n", "<leader>hs" , ":split<CR>")
+
+-- Pick a Window
+vim.keymap.set("n", "<leader>w", function()
+    local picked_window_id = picker.pick_window() or vim.api.nvim_get_current_win()
+    vim.api.nvim_set_current_win(picked_window_id)
+end, { desc = "Pick a window" })
