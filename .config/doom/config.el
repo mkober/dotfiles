@@ -42,7 +42,6 @@
 ;; change `org-directory'. It must be set before org loads!
 (setq org-directory "~/repos/notebook")
 
-
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
 ;; `after!' block, otherwise Doom's defaults may override your settings. E.g.
 ;;
@@ -90,6 +89,9 @@
 (setq-default python-indent-offset custom-tab-width)
 (setq-default evil-shift-width custom-tab-width)
 (setq-default electric-indent-inhibit t)
+
+;; Set relative line numbers
+(setq display-line-numbers-type 'relative)
 
 ;;Window Resizing with Hydra module
 (defhydra doom-window-resize-hydra (:hint nil)
