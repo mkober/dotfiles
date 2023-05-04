@@ -126,3 +126,5 @@ _h_ decrease width    _l_ increase width
 
 ;;Start Emacs Maximized
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
+
+(pixel-scroll-precision-mode)
