@@ -18,8 +18,8 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
--- Open Neotree
-vim.keymap.set("n", "nt", "<cmd>Neotree<CR>")
+-- Open NvimTree
+vim.keymap.set("n", "<leader>nt", "<cmd>NvimTreeOpen<CR>")
 
 -- Deletes the selected text, yanks it to the black hole register, and pastes it above the line
 vim.keymap.set("x", "<leader>p", [["_dP]])
@@ -36,9 +36,6 @@ vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><
 
 -- Make the current file executable
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
-
--- Open Neotree
-vim.keymap.set('n', '<leader>T', ':Neotree<CR>', {silent = true})
 
 -- Shorthand for source command
 vim.keymap.set("n", "<leader><leader>", function()
