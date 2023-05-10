@@ -1,7 +1,10 @@
 vim.g.mapleader = " "
 
 -- Open file explorer
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
+-- vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
+
+-- Open Dired
+vim.keymap.set("n", "<leader>.", "<cmd>Dired<CR>")
 
 -- Move lines
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
