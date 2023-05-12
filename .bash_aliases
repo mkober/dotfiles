@@ -14,6 +14,7 @@ alias gm="git merge"
 alias gr="git rebase"
 alias ga="git add"
 alias gc="git commit"
+alias go="git checkout"
 
 # Mount D: drive
 wsl.exe -u root -e mount -t drvfs D: /mnt/d > /dev/null 2>&1
