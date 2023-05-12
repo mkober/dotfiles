@@ -25,19 +25,19 @@ return require('packer').startup(function(use)
   use ('nvim-lua/popup.nvim')
   use ('Valloric/MatchTagAlways')
 
-  use {
-    "X3eRo0/dired.nvim",
-    requires = "MunifTanjim/nui.nvim",
-    config = function()
-        require("dired").setup {
-            path_separator = "/",
-            show_banner = false,
-            show_hidden = true,
-            show_dot_dirs = true,
-            show_colors = true,
-        }
-    end
-  }
+  -- use {
+  --   "X3eRo0/dired.nvim",
+  --   requires = "MunifTanjim/nui.nvim",
+  --   config = function()
+  --       require("dired").setup {
+  --           path_separator = "/",
+  --           show_banner = false,
+  --           show_hidden = true,
+  --           show_dot_dirs = true,
+  --           show_colors = true,
+  --       }
+  --   end
+  -- }
 
   use {
     "zbirenbaum/copilot.lua",

@@ -1,10 +1,10 @@
 vim.g.mapleader = " "
 
 -- Open file explorer
--- vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
+vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
 -- Open Dired
-vim.keymap.set("n", "<leader>.", "<cmd>Dired<CR>")
+-- vim.keymap.set("n", "<leader>.", "<cmd>Dired<CR>")
 
 -- Reload current file
 vim.keymap.set("n", "<leader>r", "<cmd>e<CR>")
