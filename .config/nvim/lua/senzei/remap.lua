@@ -6,6 +6,9 @@ vim.g.mapleader = " "
 -- Open Dired
 vim.keymap.set("n", "<leader>.", "<cmd>Dired<CR>")
 
+-- Reload current file
+vim.keymap.set("n", "<leader>r", "<cmd>e<CR>")
+
 -- Move lines
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
