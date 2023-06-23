@@ -18,3 +18,6 @@ alias go="git checkout"
 
 # Mount D: drive
 wsl.exe -u root -e mount -t drvfs D: /mnt/d > /dev/null 2>&1
+
+# Set Dark Theme
+export GTK_THEME=Adwaita:dark
