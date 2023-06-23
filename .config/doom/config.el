@@ -40,7 +40,7 @@
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
-(setq org-directory "~/Github/notebook")
+(setq org-directory "~/repos/notebook")
 
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
 ;; `after!' block, otherwise Doom's defaults may override your settings. E.g.
@@ -115,7 +115,7 @@ _h_ decrease width    _l_ increase width
           browse-url-generic-program "epiphany-browser")
 
 ;;Set default starting directory
-(setq default-directory "~/Github")
+(setq default-directory "~/repos")
 
 ;; accept completion from copilot and fallback to company
 (use-package! copilot
@@ -129,4 +129,3 @@ _h_ decrease width    _l_ increase width
 ;;Start Emacs Maximized
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
-(pixel-scroll-precision-mode)
