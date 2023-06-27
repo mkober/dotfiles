@@ -1,6 +1,9 @@
 alias vi="nvim"
 alias vim="nvim"
 
+alias python="python3"
+alias py="python3"
+
 alias pn="pnpm"
 
 alias doom="~/.config/emacs/bin/doom"
