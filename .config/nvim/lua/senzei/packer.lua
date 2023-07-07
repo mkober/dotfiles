@@ -24,6 +24,7 @@ return require('packer').startup(function(use)
   use ('liuchengxu/vim-which-key')
   use ('nvim-lua/popup.nvim')
   use ('Valloric/MatchTagAlways')
+  use ('wuelnerdotexe/vim-astro')
 
   -- use {
   --   "X3eRo0/dired.nvim",
