@@ -28,3 +28,5 @@ export GTK_THEME=Adwaita:dark
 export GIT_EDITOR=nvim
 export VISUAL=nvim
 export EDITOR="$VISUAL"
+
+complete -C '/usr/local/bin/aws_completer' aws
