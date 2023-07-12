@@ -19,6 +19,9 @@ alias ga="git add"
 alias gc="git commit"
 alias go="git checkout"
 
+alias ev="~/repos/vault/bin/encrypt.sh"
+alias dv="~/repos/vault/bin/decrypt.sh"
+
 # Mount D: drive
 wsl.exe -u root -e mount -t drvfs D: /mnt/d > /dev/null 2>&1
 
