@@ -35,4 +35,7 @@ export GIT_EDITOR=nvim
 export VISUAL=nvim
 export EDITOR="$VISUAL"
 
+export $PATH="$PATH:/usr/local/bin:/home/mkober/.local/bin"
+
 complete -C '/usr/local/bin/aws_completer' aws
+
