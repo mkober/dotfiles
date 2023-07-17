@@ -84,20 +84,10 @@ _G.packer_plugins = {
     path = "/home/mkober/.local/share/nvim/site/pack/packer/start/MatchTagAlways",
     url = "https://github.com/Valloric/MatchTagAlways"
   },
-  ["cmp-buffer"] = {
-    loaded = true,
-    path = "/home/mkober/.local/share/nvim/site/pack/packer/start/cmp-buffer",
-    url = "https://github.com/hrsh7th/cmp-buffer"
-  },
   ["cmp-nvim-lsp"] = {
     loaded = true,
     path = "/home/mkober/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",
     url = "https://github.com/hrsh7th/cmp-nvim-lsp"
-  },
-  ["cmp-path"] = {
-    loaded = true,
-    path = "/home/mkober/.local/share/nvim/site/pack/packer/start/cmp-path",
-    url = "https://github.com/hrsh7th/cmp-path"
   },
   ["conoline.vim"] = {
     loaded = true,
@@ -114,11 +104,6 @@ _G.packer_plugins = {
     path = "/home/mkober/.local/share/nvim/site/pack/packer/start/dracula.nvim",
     url = "https://github.com/Mofiqul/dracula.nvim"
   },
-  ["friendly-snippets"] = {
-    loaded = true,
-    path = "/home/mkober/.local/share/nvim/site/pack/packer/start/friendly-snippets",
-    url = "https://github.com/rafamadriz/friendly-snippets"
-  },
   harpoon = {
     loaded = true,
     path = "/home/mkober/.local/share/nvim/site/pack/packer/start/harpoon",
@@ -133,16 +118,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/mkober/.local/share/nvim/site/pack/packer/start/lualine.nvim",
     url = "https://github.com/nvim-lualine/lualine.nvim"
-  },
-  ["mason-lspconfig.nvim"] = {
-    loaded = true,
-    path = "/home/mkober/.local/share/nvim/site/pack/packer/start/mason-lspconfig.nvim",
-    url = "https://github.com/williamboman/mason-lspconfig.nvim"
-  },
-  ["mason.nvim"] = {
-    loaded = true,
-    path = "/home/mkober/.local/share/nvim/site/pack/packer/start/mason.nvim",
-    url = "https://github.com/williamboman/mason.nvim"
   },
   ["nui.nvim"] = {
     loaded = true,
