@@ -57,3 +57,6 @@ vim.keymap.set("n", "<leader>w", function()
     local picked_window_id = picker.pick_window() or vim.api.nvim_get_current_win()
     vim.api.nvim_set_current_win(picked_window_id)
 end, { desc = "Pick a window" })
+
+-- explain linting errors
+vim.keymap.set('n', '<space>e', '<cmd>lua vim.diagnostic.open_float()<CR>')
