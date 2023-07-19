@@ -27,7 +27,7 @@ return require('packer').startup(function(use)
   use ('wuelnerdotexe/vim-astro')
   use ('petobens/poet-v')
 
-  -- use ('github/copilot.vim')
+  use ('github/copilot.vim')
 
   -- use {
   --   "X3eRo0/dired.nvim",
