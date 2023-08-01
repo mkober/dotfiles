@@ -39,3 +39,5 @@ export PATH="$PATH:/usr/local/bin:/home/mkober/.local/bin"
 
 complete -C '/usr/local/bin/aws_completer' aws
 
+tmux attach -t 0 || tmux new -s 0
+
