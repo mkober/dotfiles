@@ -24,6 +24,9 @@ alias go="git checkout"
 alias ev="~/repos/vault/bin/encrypt.sh"
 alias dv="~/repos/vault/bin/decrypt.sh"
 
+alias en="~/repos/notebook/bin/encrypt.sh"
+alias dn="~/repos/notebook/bin/decrypt.sh"
+
 
 # Mount D: drive
 wsl.exe -u root -e mount -t drvfs D: /mnt/d > /dev/null 2>&1
