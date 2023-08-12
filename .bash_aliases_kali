@@ -1,3 +1,5 @@
+alias gui="kex --esm --sound"
+
 alias vi="nvim"
 alias vim="nvim"
 
@@ -8,19 +10,19 @@ alias pyvd="deactivate"
 
 alias pn="pnpm"
 
-alias gs="git status"
-alias gb="git branch"
-alias gd="git diff"
-alias gp="git push"
-alias gf="git fetch"
-alias gm="git merge"
-alias gr="git rebase"
-alias ga="git add"
-alias gc="git commit"
-alias go="git checkout"
+alias gits="git status"
+alias gitb="git branch"
+alias gitd="git diff"
+alias gitp="git push"
+alias gitf="git fetch"
+alias gitm="git merge"
+alias gitr="git rebase"
+alias gita="git add"
+alias gitc="git commit"
+alias gito="git checkout"
 
-alias ev="~/Repos/vault/bin/encrypt.sh"
-alias dv="~/Repos/vault/bin/decrypt.sh"
+alias encrypt-vault="~/Repos/vault/bin/encrypt.sh"
+alias decript-valut="~/Repos/vault/bin/decrypt.sh"
 
 export GIT_EDITOR=nvim
 export VISUAL=nvim
