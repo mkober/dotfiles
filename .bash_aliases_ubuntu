@@ -21,11 +21,11 @@ alias gita="git add"
 alias gitc="git commit"
 alias gito="git checkout"
 
-alias ev="~/repos/vault/bin/encrypt.sh"
-alias dv="~/repos/vault/bin/decrypt.sh"
+alias encrypt-vault="~/repos/vault/bin/encrypt.sh"
+alias decrypt-vault="~/repos/vault/bin/decrypt.sh"
 
-alias en="~/repos/notebook/bin/encrypt.sh"
-alias dn="~/repos/notebook/bin/decrypt.sh"
+alias encrypt-notebook="~/repos/notebook/bin/encrypt.sh"
+alias decrypt-notebook="~/repos/notebook/bin/decrypt.sh"
 
 
 # Mount D: drive
