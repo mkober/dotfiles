@@ -1,11 +1,11 @@
-return {
-  -- add dracula
-  --{ "dracula/vim" },
+-- return {
+-- add dracula
+--{ "dracula/vim" },
 
-  {
-    "LazyVim/LazyVim",
-    -- colorscheme = "dracula",
-    --opts = {
-    --},
-  },
-}
+--  {
+--    "LazyVim/LazyVim",
+-- colorscheme = "dracula",
+--opts = {
+--},
+--  },
+--}
