@@ -19,18 +19,29 @@ vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.softtabstop = 2
 
+vim.g.mapleader = " "
+vim.keymap.set("n","<leader>pv", vim.cmd.Ex)
+
 return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
   use 'Mofiqul/dracula.nvim'
+  use 'mbbill/undotree'
 
   use {
-			'nvim-treesitter/nvim-treesitter',
-			run = function()
-				local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
-				ts_update()
-			end,}
-  use("nvim-treesitter/playground")
+    'nvim-treesitter/nvim-treesitter',
+    run = function()
+      local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
+      ts_update()
+    end,
+  }
+
+  use 'nvim-treesitter/playground'
   use 'nvim-treesitter/nvim-treesitter-context'
+
+  use {
+    'nvim-telescope/telescope.nvim', tag = '0.1.3',
+    requires = { {'nvim-lua/plenary.nvim'} }
+  }
 
   use {
 	  'VonHeikemen/lsp-zero.nvim',
