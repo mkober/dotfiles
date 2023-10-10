@@ -21,11 +21,8 @@ alias gta="git add"
 alias gtc="git commit"
 alias gto="git checkout"
 
-alias encrypt-vault="~/Repos/vault/bin/encrypt.sh"
-alias decrypt-vault="~/Repos/vault/bin/decrypt.sh"
-
-alias encrypt-notebook="~/Repos/notebook/bin/encrypt.sh"
-alias decrypt-notebook="~/Repos/notebook/bin/decrypt.sh"
+alias evt="~/vault/bin/encrypt.sh"
+alias dvt="~/vault/bin/decrypt.sh"
 
 export GIT_EDITOR=nvim
 export VISUAL=nvim
