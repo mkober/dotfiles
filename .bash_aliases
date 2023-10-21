@@ -10,6 +10,8 @@ alias pn="pnpm"
 
 alias doom="~/.config/emacs/bin/doom"
 
+alias clock="sudo hwclock -s"
+
 alias gts="git status"
 alias gtb="git branch"
 alias gtd="git diff"
