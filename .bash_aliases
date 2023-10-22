@@ -10,17 +10,17 @@ alias pn="pnpm"
 
 alias doom="~/.config/emacs/bin/doom"
 
-alias clock="sudo hwclock -s"
 
 alias gts="git status"
 alias gtb="git branch"
 alias gtd="git diff"
 alias gtp="git push"
+alias gtpo="git push origin"
 alias gtf="git fetch"
 alias gtm="git merge"
 alias gtr="git rebase"
 alias gta="git add"
-alias gtc="git commit"
+alias gtc="git commit -am"
 alias gto="git checkout"
 
 alias evt="~/vault/bin/encrypt.sh"
@@ -36,3 +36,13 @@ complete -C '/usr/local/bin/aws_completer' aws
 
 tmux attach -t 0 || tmux new -s 0
 
+function aws_sso_profile() {
+  aws sso login --profile "$1"
+}
+alias aws-sso="aws_sso_profile"
+
+function update_clock () {
+  sudo hwclock -s
+  sudo ntpdate time.windows.com
+}
+alias clock="update_clock"
