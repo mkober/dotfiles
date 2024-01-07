@@ -31,6 +31,7 @@ alias reset="cd ~ && clear"
 export GIT_EDITOR=nvim
 export VISUAL=nvim
 export EDITOR="$VISUAL"
+export BROWSER='/mnt/c/Program\ Files/BraveSoftware/Brave-Browser/Application/brave.exe'
 
 export PATH="$PATH:/usr/local/bin:/home/mkober/.local/bin"
 
@@ -52,3 +53,4 @@ function update_clock () {
   sudo ntpdate time.windows.com
 }
 alias clock="update_clock"
+
