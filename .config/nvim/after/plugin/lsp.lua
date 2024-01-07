@@ -4,8 +4,10 @@ lsp.preset("recommended")
 
 lsp.ensure_installed({
   'eslint',
+  'clangd',
   'tsserver',
-  'rust_analyzer',
+  'pyright',
+  'intelephense',
 })
 
 -- Fix Undefined global 'vim'
@@ -52,6 +54,10 @@ lsp.on_attach(function(client, bufnr)
   vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
   vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
 end)
+
+lsp.configure("intelephense", {
+    on_attach = on_attach,
+})
 
 lsp.setup()
 

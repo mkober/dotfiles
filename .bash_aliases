@@ -26,6 +26,8 @@ alias gto="git checkout"
 alias evt="~/vault/bin/encrypt.sh"
 alias dvt="~/vault/bin/decrypt.sh"
 
+alias reset="cd ~ && clear"
+
 export GIT_EDITOR=nvim
 export VISUAL=nvim
 export EDITOR="$VISUAL"
@@ -40,6 +42,10 @@ function aws_sso_profile() {
   aws sso login --profile "$1"
 }
 alias aws-sso="aws_sso_profile"
+alias aws-ec2-running="aws ec2 describe-instances --filters Name=instance-state-name,Values=running --query 'Reservations[].Instances[].[InstanceId, Tags]' --output text"
+alias aws-ec2-stop="aws ec2 stop-instances --instance-ids"
+alias aws-ec2-start="aws ec2 start-instances --instance-ids"
+alias aws-ecr-login="aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws"
 
 function update_clock () {
   sudo hwclock -s

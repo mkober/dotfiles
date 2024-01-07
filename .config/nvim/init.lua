@@ -29,7 +29,9 @@ vim.opt.updatetime = 50
 vim.opt.colorcolumn = "80"
 
 vim.g.mapleader = " "
+
 vim.keymap.set("n","<leader>pv", vim.cmd.Ex)
+vim.keymap.set("i","jk", "<Esc>")
 
 return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
