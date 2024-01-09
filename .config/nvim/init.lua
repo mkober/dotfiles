@@ -23,15 +23,17 @@ vim.opt.swapfile = false
 vim.opt.backup = false
 vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 vim.opt.undofile = true
-vim.opt.scrolloff = 8
 vim.opt.signcolumn = "yes"
 vim.opt.updatetime = 50
-vim.opt.colorcolumn = "80"
+
+--vim.opt.scrolloff = 8
+--vim.opt.colorcolumn = "80"
 
 vim.g.mapleader = " "
 
 vim.keymap.set("n","<leader>pv", vim.cmd.Ex)
-vim.keymap.set("i","jk", "<Esc>")
+vim.keymap.set("n","<C-S>",":update<CR>")
+vim.keymap.set("i","jk", "<Esc>:w<CR>")
 
 return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
