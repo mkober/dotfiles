@@ -47,6 +47,7 @@ alias aws-ec2-running="aws ec2 describe-instances --filters Name=instance-state-
 alias aws-ec2-stop="aws ec2 stop-instances --instance-ids"
 alias aws-ec2-start="aws ec2 start-instances --instance-ids"
 alias aws-ecr-login="aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws"
+alias aws-nosql-workbench='/opt/DynamoDBWorkbench/NoSQL\ Workbench-linux-3.10.0.AppImage'
 
 function update_clock () {
   sudo hwclock -s

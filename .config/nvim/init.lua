@@ -31,9 +31,20 @@ vim.opt.updatetime = 50
 
 vim.g.mapleader = " "
 
+-- go back to file view
 vim.keymap.set("n","<leader>pv", vim.cmd.Ex)
+
+-- save the file if it's been updated
 vim.keymap.set("n","<C-S>",":update<CR>")
-vim.keymap.set("i","jk", "<Esc>:w<CR>")
+
+-- go forward a page
+vim.keymap.set("n","f", "<C-F>")
+
+-- go back a page
+vim.keymap.set("n","b", "<C-B>")
+
+-- exit insert mode by pressing jk quickly, also save the file 
+vim.keymap.set("i","jk", "<Esc>:update<CR>")
 
 return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
