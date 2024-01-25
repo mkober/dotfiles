@@ -28,6 +28,7 @@ alias dvt="~/vault/bin/decrypt.sh"
 
 alias reset="cd ~ && clear"
 
+export GDK_DPI_SCALE=1.5
 export GIT_EDITOR=nvim
 export VISUAL=nvim
 export EDITOR="$VISUAL"
