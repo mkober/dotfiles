@@ -21,8 +21,8 @@
 ;; See 'C-h v doom-font' for documentation and more examples of what they
 ;; accept. For example:
 ;;
-(setq doom-font (font-spec :family "Monospace" :size 22 :weight 'regular)
-      doom-variable-pitch-font (font-spec :family "Monospace" :size 23))
+(setq doom-font (font-spec :family "Monospace" :size 16 :weight 'regular)
+      doom-variable-pitch-font (font-spec :family "Monospace" :size 18))
 ;;
 ;; If you or Emacs can't find your font, use 'M-x describe-font' to look them
 ;; up, `M-x eval-region' to execute elisp code, and 'M-x doom/reload-font' to
@@ -40,7 +40,7 @@
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
-(setq org-directory "~/notebook")
+(setq org-directory "~/Org")
 
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
 ;; `after!' block, otherwise Doom's defaults may override your settings. E.g.
@@ -110,12 +110,8 @@ _h_ decrease width    _l_ increase width
     (:prefix "C-w C-w"
       :desc "Hydra resize" :n "SPC" #'doom-window-resize-hydra/body))
 
-;; Set default browser for Ubunto on WSL
-(setq browse-url-browser-function 'browse-url-generic
-          browse-url-generic-program "epiphany-browser")
-
 ;;Set default starting directory
-(setq default-directory "~/notebook")
+(setq default-directory "~/Repos")
 
 ;; accept completion from copilot and fallback to company
 (use-package! copilot
