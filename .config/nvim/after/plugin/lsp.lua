@@ -8,6 +8,7 @@ lsp.ensure_installed({
   'tsserver',
   'pyright',
   'intelephense',
+  'tailwindcss'
 })
 
 -- Fix Undefined global 'vim'
