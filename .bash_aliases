@@ -83,8 +83,20 @@ alias clock="update_clock"
 # Docker Aliases
 alias jq="docker run -it ghcr.io/jqlang/jq"
 
+# Customize Bash Prompt
+git_branch () {
+  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'
+}
+HOST='\[\033[02;36m\]\h'; HOST='@'$HOST
+CUSTOM_USER='\[\033[01;31m\]$USER\[\033[01;32m\]'
+LOCATION=' \[\033[01;32m\]`pwd `'
+BRANCH=' \[\033[00;33m\]($(git_branch))\[\033[00m\]\n\[\033[1;33m\]-> \[\033[0m\] '
+PS1=$CUSTOM_USER$HOST$LOCATION$BRANCH
+
 # Update the Path
 export PATH="$PATH:/usr/local/bin:/home/mkober/.local/bin"
 
 # Startup TMUX and attach session if it exists
 tmux attach -t 0 || tmux new -s 0
+
+
