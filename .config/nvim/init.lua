@@ -37,6 +37,10 @@ vim.keymap.set("n","<leader>pv", vim.cmd.Ex)
 -- save the file if it's been updated
 vim.keymap.set("n","<C-S>",":update<CR>")
 
+-- go to previous and next buffer
+vim.keymap.set("n","<leader>bb",":bp<CR>")
+vim.keymap.set("n","<leader>nn",":bn<CR>")
+
 -- go forward a page
 vim.keymap.set("n","f", "<C-F>")
 
@@ -46,10 +50,13 @@ vim.keymap.set("n","b", "<C-B>")
 -- exit insert mode by pressing jk quickly, also save the file 
 vim.keymap.set("i","jk", "<Esc>:update<CR>")
 
+
 return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
   use 'Mofiqul/dracula.nvim'
   use 'mbbill/undotree'
+  use 'tpope/vim-fugitive'
+  use 'folke/trouble.nvim'
 
   use {
     'nvim-treesitter/nvim-treesitter',
@@ -80,16 +87,31 @@ return require('packer').startup(function(use)
 		  {'hrsh7th/nvim-cmp'},
 		  {'hrsh7th/cmp-buffer'},
 		  {'hrsh7th/cmp-path'},
-		  {'saadparwaiz1/cmp_luasnip'},
 		  {'hrsh7th/cmp-nvim-lsp'},
-		  {'hrsh7th/cmp-nvim-lua'},
+		  {'saadparwaiz1/cmp_luasnip'},
+	 	  {'hrsh7th/cmp-nvim-lua'},
 
 		  -- Snippets
 		  {'L3MON4D3/LuaSnip'},
 		  {'rafamadriz/friendly-snippets'},
 	  }
   }
-  
+
+  use("github/copilot.vim")
+
+  use {
+    "folke/which-key.nvim",
+    config = function()
+      vim.o.timeout = true
+      vim.o.timeoutlen = 300
+      require("which-key").setup {
+        -- your configuration comes here
+        -- or leave it empty to use the default settings
+        -- refer to the configuration section below
+      }
+    end
+  }
+
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if packer_bootstrap then

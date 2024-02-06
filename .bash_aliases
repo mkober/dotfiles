@@ -1,4 +1,5 @@
 # Neovim is my VI & VIM
+alias v="nvim"
 alias vi="nvim"
 alias vim="nvim"
 
@@ -28,11 +29,16 @@ alias gtc="git commit -am"
 alias gto="git checkout"
 
 # Too many secrets
-alias evt="~/vault/bin/encrypt.sh"
-alias dvt="~/vault/bin/decrypt.sh"
+alias evt="~/Vault/bin/encrypt.sh"
+alias dvt="~/Vault/bin/decrypt.sh"
 
-# Clear out the screen
+# Reset the path & clear out the screen
+alias r="cd ~ && clear"
 alias reset="cd ~ && clear"
+
+# Go to my repos
+alias repos="cd ~/Repos"
+alias dotfiles="cd ~/Repos/dotfiles"
 
 export GDK_DPI_SCALE=1.5
 export GIT_EDITOR=nvim
