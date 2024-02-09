@@ -1,9 +1,13 @@
+# Single character 
+alias l="ls -la"
+alias c="clear"
+
 # Neovim is my VI & VIM
 alias v="nvim"
 alias vi="nvim"
 alias vim="nvim"
 
-# Python Environments
+# Quick Python
 alias python="python3"
 alias py="python3"
 alias pyv="source .venv/bin/activate"
@@ -15,7 +19,7 @@ alias pn="pnpm"
 # The second greatest editor next to Neovim
 alias doom="~/.config/emacs/bin/doom"
 
-# Git Shortcuts
+# Git shortcuts because I'm lazy
 alias gts="git status"
 alias gtb="git branch"
 alias gtd="git diff"
@@ -33,12 +37,15 @@ alias evt="~/Vault/bin/encrypt.sh"
 alias dvt="~/Vault/bin/decrypt.sh"
 
 # Reset the path & clear out the screen
-alias r="cd ~ && clear"
 alias reset="cd ~ && clear"
 
 # Go to my repos
 alias repos="cd ~/Repos"
-alias dotfiles="cd ~/Repos/dotfiles"
+alias dot="cd ~/Repos/dotfiles"
+alias cloudbuild="cd ~/Repos/cloudbuild"
+alias mk="cd ~/Repos/markkoberlein"
+alias fancy="cd ~/Repos/fancyrabbit"
+alias setup="cd ~/Repos/ubuntu-setup"
 
 export GDK_DPI_SCALE=1.5
 export GIT_EDITOR=nvim
@@ -46,7 +53,7 @@ export VISUAL=nvim
 export EDITOR="$VISUAL"
 
 # Needed for WSL to open URLs in Windows Browser
-export BROWSER='/mnt/c/Program\ Files/BraveSoftware/Brave-Browser/Application/brave.exe'
+# export BROWSER='/mnt/c/Program\ Files/BraveSoftware/Brave-Browser/Application/brave.exe'
 
 # Shortcuts for AWS Commands because they are long
 complete -C '/usr/local/bin/aws_completer' aws
@@ -93,7 +100,7 @@ LOCATION=' \[\033[01;32m\]`pwd `'
 BRANCH=' \[\033[00;33m\]($(git_branch))\[\033[00m\]\n\[\033[1;33m\]-> \[\033[0m\] '
 PS1=$CUSTOM_USER$HOST$LOCATION$BRANCH
 
-# Update the Path
+# Update the path for the bins
 export PATH="$PATH:/usr/local/bin:/home/mkober/.local/bin"
 
 # Startup TMUX and attach session if it exists
