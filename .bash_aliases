@@ -90,6 +90,9 @@ alias clock="update_clock"
 # Docker Aliases
 alias jq="docker run -it ghcr.io/jqlang/jq"
 
+# GUI apps
+alias browser="chromium --ozone-platform=wayland --enable-features=UseOzonePlatform" #need this for HDPI
+
 # Customize Bash Prompt
 git_branch () {
   git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'
