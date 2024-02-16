@@ -1,6 +1,7 @@
-# Single character 
+# Single character quick hits
 alias l="ls -la"
 alias c="clear"
+alias b="source ~/.bash_aliases"
 
 # Neovim is my VI & VIM
 alias v="nvim"
@@ -35,6 +36,7 @@ alias gto="git checkout"
 # Too many secrets
 alias evt="~/Vault/bin/encrypt.sh"
 alias dvt="~/Vault/bin/decrypt.sh"
+alias vault="cd ~/Vault"
 
 # Reset the path & clear out the screen
 alias reset="cd ~ && clear"
