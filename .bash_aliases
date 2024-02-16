@@ -48,6 +48,8 @@ alias fancy="cd ~/Repos/fancyrabbit"
 alias setup="cd ~/Repos/ubuntu-setup"
 
 export GDK_DPI_SCALE=1.5
+export GDK_SCALE=1.5
+export CLUTTER_SCALE=1.5
 export GIT_EDITOR=nvim
 export VISUAL=nvim
 export EDITOR="$VISUAL"
