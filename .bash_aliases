@@ -2,6 +2,7 @@
 alias l="ls -la"
 alias c="clear"
 alias b="source ~/.bash_aliases"
+alias h="cd ~/"
 
 # Neovim is my VI & VIM
 alias v="nvim"
@@ -34,8 +35,8 @@ alias gtc="git commit -am"
 alias gto="git checkout"
 
 # Too many secrets
-alias evt="~/Vault/bin/encrypt.sh"
-alias dvt="~/Vault/bin/decrypt.sh"
+alias evt="~/Vault/run.sh encrypt"
+alias dvt="~/Vault/run.sh decrypt"
 alias vault="cd ~/Vault"
 
 # Reset the path & clear out the screen
