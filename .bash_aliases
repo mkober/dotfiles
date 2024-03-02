@@ -35,9 +35,10 @@ alias gtc="git commit -am"
 alias gto="git checkout"
 
 # Too many secrets
-alias evt="~/Vault/run.sh encrypt"
-alias dvt="~/Vault/run.sh decrypt"
-alias vault="cd ~/Vault"
+export VAULT_PATH="/home/mkober/Vault"
+alias evt="~/Repos/vault-tec/run.sh encrypt"
+alias dvt="~/Repos/vault-tec/run.sh decrypt"
+alias vault="cd $VAULT_PATH"
 
 # Reset the path & clear out the screen
 alias reset="cd ~ && clear"
