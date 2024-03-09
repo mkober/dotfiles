@@ -62,7 +62,7 @@ function git_sync_repos() {
     printf "GIT PROJECT: $folder\n"
     git add .
     git commit -am "auto-sync with local"
-    git pull origin main
+    git pull origin main --rebase
     git push origin main
     printf "\n\n"
     cd ..
