@@ -41,6 +41,35 @@ function git_remove_file() {
 }
 alias git-remove="git_remove_file"
 
+function git_status_check() {
+  cd ~/Repos
+  for folder in *; do
+    cd $folder
+    printf "\n==================================\n"
+    printf "GIT PROJECT: $folder\n"
+    git status
+    printf "\n\n"
+    cd ..
+  done
+}
+alias git-status="git_status_check"
+
+function git_sync_repos() {
+  cd ~/Repos
+  for folder in *; do
+    cd $folder
+    printf "\n==================================\n"
+    printf "GIT PROJECT: $folder\n"
+    git add .
+    git commit -am "auto-sync with local"
+    git pull origin main
+    git push origin main
+    printf "\n\n"
+    cd ..
+  done
+}
+alias git-sync="git_sync_repos"
+
 # Too many secrets
 export VAULT_PATH="/home/mkober/Vault"
 alias evt="~/Repos/vault-tec/run.sh encrypt"
