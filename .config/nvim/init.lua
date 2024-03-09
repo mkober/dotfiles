@@ -661,7 +661,7 @@ local servers = {
   -- gopls = {},
   pyright = {},
   -- rust_analyzer = {},
-  -- tailwindcss = {},
+  tailwindcss = {},
   tsserver = {},
   html = { filetypes = { 'html', 'twig', 'hbs'} },
 

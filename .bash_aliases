@@ -34,6 +34,13 @@ alias gta="git add"
 alias gtc="git commit -am"
 alias gto="git checkout"
 
+function git_remove_file() {
+  git filter-branch --force --index-filter \
+  "git rm --cached --ignore-unmatch $1" \
+  --prune-empty --tag-name-filter cat -- --all
+}
+alias git-remove="git_remove_file"
+
 # Too many secrets
 export VAULT_PATH="/home/mkober/Vault"
 alias evt="~/Repos/vault-tec/run.sh encrypt"
@@ -75,6 +82,35 @@ alias aws-ec2-start="aws ec2 start-instances --instance-ids"
 alias aws-ecr-login="aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws"
 alias aws-nosql-workbench='/opt/DynamoDBWorkbench/NoSQL\ Workbench-linux-3.10.0.AppImage'
 
+alias ls3="aws s3 ls"
+
+function aws_s3_put_to_bucket() {
+  aws s3 cp $1 "s3://$2/$1"
+}
+alias put3="aws_s3_put_to_bucket"
+
+function aws_s3_get_from_bucket() {
+  aws s3 cp "s3://$2/$1" $1
+}
+alias get3="aws_s3_get_from_bucket"
+
+function aws_s3_remove_from_bucket() {
+  aws s3 rm "s3://$1"
+}
+alias rm3="aws_s3_remove_from_bucket"
+
+function aws_s3_create_bucket() {
+  aws s3 mb s3://$1
+}
+alias mb3="aws_s3_create_bucket"
+
+function aws_s3_rename_bucket() {
+  aws s3 mb s3://$2 
+  aws s3 cp s3://$1 s3://$2 --recursive
+  aws s3 rb s3://$1 --force
+}
+alias mvb="aws_s3_rename_bucket"
+
 function aws_ecs_bash() {
   aws ecs execute-command  \
       --region us-east-1 \
@@ -95,9 +131,6 @@ alias clock="update_clock"
 
 # Docker Aliases
 alias jq="docker run -it ghcr.io/jqlang/jq"
-
-# GUI apps
-alias browser="chromium --ozone-platform=wayland --enable-features=UseOzonePlatform" #need this for HDPI
 
 # Customize Bash Prompt
 git_branch () {
