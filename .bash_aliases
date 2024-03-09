@@ -45,10 +45,13 @@ function git_status_check() {
   cd ~/Repos
   for folder in *; do
     cd $folder
-    printf "\n==================================\n"
-    printf "GIT PROJECT: $folder\n"
-    git status
-    printf "\n\n"
+    git status | grep -q "nothing to commit"
+    if [ $? -ne 0 ]; then
+      printf "\n==================================\n"
+      printf "GIT PROJECT: $folder\n"
+      git status
+      printf "\n\n"
+    fi
     cd ..
   done
 }
@@ -58,18 +61,21 @@ function git_sync_repos() {
   cd ~/Repos
   for folder in *; do
     cd $folder
-    printf "\n==================================\n"
-    printf "GIT PROJECT: $folder\n"
-    git add .
-    git commit -am "auto-sync with local"
-    branch="main"
-    if git branch --list | grep -q "master"; then
-      branch="master"
+    git status | grep -q "nothing to commit"
+    if [ $? -ne 0 ]; then
+      printf "\n==================================\n"
+      printf "GIT PROJECT: $folder\n"
+      git add .
+      git commit -am "auto-sync with local"
+      branch="main"
+      if git branch --list | grep -q "master"; then
+        branch="master"
+      fi
+      git checkout $branch
+      git pull origin $branch --rebase
+      git push origin $branch
+      printf "\n\n"
     fi
-    git checkout $branch
-    git pull origin $branch --rebase
-    git push origin $branch
-    printf "\n\n"
     cd ..
   done
 }
