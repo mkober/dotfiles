@@ -62,11 +62,11 @@ function git_sync_repos() {
     printf "GIT PROJECT: $folder\n"
     git add .
     git commit -am "auto-sync with local"
-    #TODO need to check for main or master
     branch="main"
     if git branch --list | grep -q "master"; then
       branch="master"
     fi
+    git checkout $branch
     git pull origin $branch --rebase
     git push origin $branch
     printf "\n\n"
