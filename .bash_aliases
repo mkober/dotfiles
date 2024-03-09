@@ -68,8 +68,8 @@ function git_sync_repos() {
     else
       $branch = "main"
     fi
-    git pull origin $branch --rebase
-    git push origin $branch
+    git "pull origin $branch --rebase"
+    git "push origin $branch"
     printf "\n\n"
     cd ..
   done
