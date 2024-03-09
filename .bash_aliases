@@ -63,9 +63,9 @@ function git_sync_repos() {
     git add .
     git commit -am "auto-sync with local"
     #TODO need to check for main or master
-    branch = "main"
+    branch="main"
     if git branch --list | grep -q "^\s*master$"; then
-      branch = "master"
+      branch="master"
     fi
     git pull origin $branch --rebase
     git push origin $branch
