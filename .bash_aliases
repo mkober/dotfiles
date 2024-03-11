@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Load the referenced functions 
-source ".bash_functions"
+source ~/.bash_functions
 
 # Single character quick hits
 alias l="ls -la"
