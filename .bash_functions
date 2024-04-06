@@ -47,23 +47,29 @@ function git_sync_repos() {
 function aws_sso_profile() {
   aws sso login --profile "$1"
 }
+
 function aws_s3_put_to_bucket() {
   aws s3 cp $1 "s3://$2/$1"
 }
+
 function aws_s3_get_from_bucket() {
   aws s3 cp "s3://$2/$1" $1
 }
+
 function aws_s3_remove_from_bucket() {
   aws s3 rm "s3://$1"
 }
+
 function aws_s3_create_bucket() {
   aws s3 mb s3://$1
 }
+
 function aws_s3_rename_bucket() {
   aws s3 mb s3://$2 
   aws s3 cp s3://$1 s3://$2 --recursive
   aws s3 rb s3://$1 --force
 }
+
 function aws_ecs_bash() {
   aws ecs execute-command  \
       --region us-east-1 \
