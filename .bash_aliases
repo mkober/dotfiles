@@ -88,6 +88,8 @@ alias clock="update_clock"
 # Docker Aliases
 alias jq="docker run -it ghcr.io/jqlang/jq"
 
+alias next="npx create-next-app@latest"
+
 # Customize Bash Prompt
 git_branch () {
   git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'

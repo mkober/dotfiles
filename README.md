@@ -7,10 +7,10 @@ This readme is just a way for me to make note of all the aliases and functions I
 l="ls -la"  
 c="clear"  
 h="cd ~/"  
+b="source ~/.bash_aliases"
+
 reset="cd ~ && clear"  
 clock="update_clock"  
-
-b="source ~/.bash_aliases"
 
 v="nvim"  
 vi="nvim"  
@@ -58,4 +58,4 @@ mb3="aws_s3_create_bucket"
 mvb="aws_s3_rename_bucket"  
 
 jq="docker run -it ghcr.io/jqlang/jq"  
-
+next="npx create-next-app@latest"
