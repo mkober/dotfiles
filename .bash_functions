@@ -70,6 +70,10 @@ function aws_s3_rename_bucket() {
   aws s3 rb s3://$1 --force
 }
 
+function aws_cloudformation_list_stack_names() {
+  aws cloudformation list-stacks --query 'StackSummaries[*].StackName' --stack-status-filter CREATE_COMPLETE UPDATE_COMPLETE UPDATE_ROLLBACK_COMPLETE --profile $1 | sort
+}
+
 function aws_ecs_bash() {
   aws ecs execute-command  \
       --region us-east-1 \

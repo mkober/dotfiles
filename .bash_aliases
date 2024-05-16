@@ -44,8 +44,8 @@ alias git-status="git_status_check"
 alias git-sync="git_sync_repos"
 
 # Too many secrets
-alias evt="~/Repos/vault-tec/run.sh encrypt"
-alias dvt="~/Repos/vault-tec/run.sh decrypt"
+alias evt="~/Repos/mkober/vault-tec/run.sh encrypt"
+alias dvt="~/Repos/mkober/vault-tec/run.sh decrypt"
 alias vault="cd $VAULT_PATH"
 
 # Reset the path & clear out the screen
@@ -53,11 +53,12 @@ alias reset="cd ~ && clear"
 
 # Go to my repos
 alias repos="cd ~/Repos"
-alias dot="cd ~/Repos/dotfiles"
-alias cloudbuild="cd ~/Repos/cloudbuild"
-alias mk="cd ~/Repos/markkoberlein"
-alias fancy="cd ~/Repos/fancyrabbit"
-alias setup="cd ~/Repos/ubuntu-setup"
+alias pkh="cd ~/Repos/projectkittyhawk"
+alias dot="cd ~/Repos/mkober/dotfiles"
+alias cloudbuild="cd ~/Repos/mkober/cloudbuild"
+alias mk="cd ~/Repos/mkober/markkoberlein"
+alias fancy="cd ~/Repos/mkober/fancyrabbit"
+alias setup="cd ~/Repos/mkober/ubuntu-setup"
 
 # Needed for WSL to open URLs in Windows Browser
 # export BROWSER='/mnt/c/Program\ Files/BraveSoftware/Brave-Browser/Application/brave.exe'
@@ -65,15 +66,16 @@ alias setup="cd ~/Repos/ubuntu-setup"
 # Shortcuts for AWS Commands because they are long
 complete -C '/usr/local/bin/aws_completer' aws
 
-alias aws-sso="aws_sso_profile"
+alias sso="aws_sso_profile"
 
-alias aws-ec2-running="aws ec2 describe-instances --filters Name=instance-state-name,Values=running --query 'Reservations[].Instances[].[InstanceId, Tags]' --output text"
-alias aws-ec2-stop="aws ec2 stop-instances --instance-ids"
-alias aws-ec2-start="aws ec2 start-instances --instance-ids"
-alias aws-ecr-login="aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws"
+alias ec2-running="aws ec2 describe-instances --filters Name=instance-state-name,Values=running --query 'Reservations[].Instances[].[InstanceId, Tags]' --output text"
+alias ec2-stop="aws ec2 stop-instances --instance-ids"
+alias ec2-start="aws ec2 start-instances --instance-ids"
+alias ecr-login="aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws"
 
-alias aws-nosql-workbench='/opt/DynamoDBWorkbench/NoSQL\ Workbench-linux-3.10.0.AppImage'
-alias aws-ecs-connect="aws_ecs_bash"
+alias nosql-workbench='/opt/DynamoDBWorkbench/NoSQL\ Workbench-linux-3.10.0.AppImage'
+alias ecs-connect="aws_ecs_bash"
+alias stack-names="aws_cloudformation_list_stack_names"
 
 alias ls3="aws s3 ls"
 alias put3="aws_s3_put_to_bucket"
