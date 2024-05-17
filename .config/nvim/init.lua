@@ -365,6 +365,38 @@ vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 vim.opt.undofile = true
 vim.opt.signcolumn = "yes"
 vim.opt.updatetime = 50
+vim.opt.fileformat = 'unix' -- Line endings (LF)
+vim.opt.encoding = 'utf-8'
+vim.opt.textwidth = 80 -- Maximum line length
+
+-- Autocmd for trimming trailing whitespace (except for Markdown)
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = "*",
+  command = "if &ft != 'markdown' | %s/\\s\\+$//e | endif"
+})
+
+-- Autocmd for inserting a final newline
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = "*",
+  command = "if !getline('$') | $put='' | endif" 
+})
+
+-- Filetype-specific settings
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "markdown" },
+  callback = function()
+    vim.opt_local.shiftwidth = 4
+    vim.opt_local.tabstop = 4
+  end,
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "python" },
+  callback = function()
+    vim.opt_local.shiftwidth = 4
+    vim.opt_local.tabstop = 4
+  end,
+})
 
 -- CUSTOM COMMANDS
 vim.cmd[[colorscheme dracula]]
