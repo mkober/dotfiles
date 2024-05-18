@@ -76,7 +76,7 @@ require('lazy').setup({
   {
     'laytan/tailwind-sorter.nvim',
     dependencies = {
-      'nvim-treesitter/nvim-treesitter', 
+      'nvim-treesitter/nvim-treesitter',
       'nvim-lua/plenary.nvim'
     },
     build = 'cd formatter && npm i && npm run build',
@@ -375,10 +375,16 @@ vim.api.nvim_create_autocmd("BufWritePre", {
   command = "if &ft != 'markdown' | %s/\\s\\+$//e | endif"
 })
 
--- Autocmd for inserting a final newline
+
 vim.api.nvim_create_autocmd("BufWritePre", {
   pattern = "*",
-  command = "if !getline('$') | $put='' | endif" 
+  callback = function()
+    local cursor_pos = vim.api.nvim_win_get_cursor(0)
+    if vim.fn.getline('$') == '' then
+      vim.api.nvim_buf_set_lines(0, -1, -1, false, {""})
+    end
+    vim.api.nvim_win_set_cursor(0, cursor_pos)
+  end
 })
 
 -- Filetype-specific settings
@@ -434,7 +440,7 @@ vim.keymap.set("n","f", "<C-F>")
 -- go back a page
 vim.keymap.set("n","b", "<C-B>")
 
--- exit insert mode by pressing jk quickly, also save the file 
+-- exit insert mode by pressing jk quickly, also save the file
 vim.keymap.set("i","jk", "<Esc>:update<CR>")
 
 -- quick splits
@@ -841,3 +847,5 @@ prettier.setup({
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
+
+
