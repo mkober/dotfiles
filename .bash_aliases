@@ -62,6 +62,7 @@ alias setup="cd ~/Repos/mkober/ubuntu-setup"
 
 # Needed for WSL to open URLs in Windows Browser
 # export BROWSER='/mnt/c/Program\ Files/BraveSoftware/Brave-Browser/Application/brave.exe'
+export BROWSER=wslview
 
 # Shortcuts for AWS Commands because they are long
 complete -C '/usr/local/bin/aws_completer' aws
