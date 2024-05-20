@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Load the referenced functions 
+# Load the referenced functions
 source ~/.bash_functions
 
 # Single character quick hits
@@ -18,6 +18,7 @@ alias vim="nvim"
 alias python="python3"
 alias py="python3"
 alias pyv="source .venv/bin/activate"
+alias pyvm="python -m venv .venv"
 alias pyvd="deactivate"
 
 # I hate typing pnpm but normally use npm anyway
@@ -53,12 +54,14 @@ alias reset="cd ~ && clear"
 
 # Go to my repos
 alias repos="cd ~/Repos"
-alias pkh="cd ~/Repos/projectkittyhawk"
 alias dot="cd ~/Repos/mkober/dotfiles"
 alias cloudbuild="cd ~/Repos/mkober/cloudbuild"
-alias mk="cd ~/Repos/mkober/markkoberlein"
 alias fancy="cd ~/Repos/mkober/fancyrabbit"
 alias setup="cd ~/Repos/mkober/ubuntu-setup"
+
+# The day job
+alias pkh="cd ~/Repos/pkh"
+alias pkh-npm="npm login --scope=@projectkittyhawk --auth-type=legacy --registry=https://npm.pkg.github.com"
 
 # Needed for WSL to open URLs in Windows Browser
 # export BROWSER='/mnt/c/Program\ Files/BraveSoftware/Brave-Browser/Application/brave.exe'
@@ -115,5 +118,12 @@ export PATH="$PATH:/usr/local/bin:/home/mkober/.local/bin"
 
 # Startup TMUX and attach session if it exists
 tmux attach -t 0 || tmux new -s 0
+
+
+
+
+
+
+
 
 
