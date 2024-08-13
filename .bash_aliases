@@ -107,7 +107,12 @@ LOCATION=' \[\033[01;32m\]`pwd `'
 BRANCH=' \[\033[00;33m\]($(git_branch))\[\033[00m\]\n\[\033[1;33m\]-> \[\033[0m\] '
 PS1=$CUSTOM_USER$HOST$LOCATION$BRANCH
 
-export VAULT_PATH="/home/mkober/Vault"
+if [[ $OSTYPE == 'darwin'* ]]; then
+  export VAULT_PATH="/Users/mkoberlein/Vault"
+else
+  export VAULT_PATH="/home/mkober/Vault"
+fi
+
 export GDK_DPI_SCALE=1.5
 export GDK_SCALE=1.5
 export CLUTTER_SCALE=1.5
@@ -116,8 +121,23 @@ export VISUAL=nvim
 export EDITOR="$VISUAL"
 export PATH="$PATH:/usr/local/bin:/home/mkober/.local/bin"
 
+export CERT_PATH=$(python3 -m certifi)
+export SSL_CERT_FILE=${CERT_PATH}
+export REQUESTS_CA_BUNDLE=${CERT_PATH}
+
 # Startup TMUX and attach session if it exists
 tmux attach -t 0 || tmux new -s 0
+
+
+
+
+
+
+
+
+
+
+
 
 
 

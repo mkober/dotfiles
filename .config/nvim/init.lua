@@ -105,6 +105,17 @@ require('lazy').setup({
     },
   },
 
+  {
+    "jiaoshijie/undotree",
+    dependencies = { 
+      "nvim-lua/plenary.nvim" 
+    },
+    config = true,
+    keys = { -- load the plugin only when using it's keybinding:
+      { "<leader>u", "<cmd>lua require('undotree').toggle()<cr>" },
+    },
+  },
+
   -- Prettier
   'jose-elias-alvarez/null-ls.nvim',
   'MunifTanjim/prettier.nvim',
@@ -832,7 +843,6 @@ prettier.setup({
     "html",
     "javascript",
     "javascriptreact",
-    "json",
     "less",
     "markdown",
     "scss",
@@ -847,5 +857,9 @@ prettier.setup({
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
+
+
+
+
 
 
