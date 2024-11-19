@@ -98,6 +98,10 @@ alias mvb="aws_s3_rename_bucket"
 # Update Clock because of time drift on WSL
 alias clock="update_clock"
 
+# Don't put baby in a corner
+alias sz="open -a /Applications/Zscaler/Zscaler.app --hide; sudo find /Library/LaunchDaemons -name '*zscaler*' -exec launchctl load {} \;"
+alias kz="find /Library/LaunchAgents -name '*zscaler*' -exec launchctl unload {} \;;sudo find /Library/LaunchDaemons -name '*zscaler*' -exec launchctl unload {} \;"
+
 # Docker Aliases
 #alias jq="docker run -it ghcr.io/jqlang/jq"
 
@@ -131,6 +135,7 @@ export PATH="$PATH:/usr/local/bin:/home/mkober/.local/bin"
 export CERT_PATH=$(python3 -m certifi)
 export SSL_CERT_FILE=${CERT_PATH}
 export REQUESTS_CA_BUNDLE=${CERT_PATH}
+
 
 
 
