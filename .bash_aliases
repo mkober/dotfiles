@@ -17,7 +17,7 @@ alias vim="nvim"
 # Quick Python
 alias python="python3"
 alias py="python3"
-alias pyv="source .venv/bin/activate"
+alias pyv="source ~/.venv/bin/activate"
 alias pyvm="python -m venv .venv"
 alias pyvd="deactivate"
 
@@ -34,11 +34,14 @@ alias gtd="git diff"
 alias gtp="git push"
 alias gtpo="git push origin"
 alias gtf="git fetch"
+alias gtfo="git fetch origin main"
 alias gtm="git merge"
+alias gtmo="git merge origin/main"
 alias gtr="git rebase"
 alias gta="git add"
 alias gtc="git commit -am"
 alias gto="git checkout"
+alias gtob="git checkout -b"
 
 alias git-remove="git_remove_file"
 alias git-status="git_status_check"
@@ -61,6 +64,8 @@ alias setup="cd ~/Repos/mkober/ubuntu-setup"
 
 # The day job
 alias pkh="cd ~/Repos/pkh"
+alias pkh-dev="export envName=dev01"
+alias pkh-sand="export envName=sand01"
 alias pkh-npm="npm login --scope=@projectkittyhawk --auth-type=legacy --registry=https://npm.pkg.github.com"
 
 # Needed for WSL to open URLs in Windows Browser
@@ -92,7 +97,7 @@ alias mvb="aws_s3_rename_bucket"
 alias clock="update_clock"
 
 # Docker Aliases
-alias jq="docker run -it ghcr.io/jqlang/jq"
+#alias jq="docker run -it ghcr.io/jqlang/jq"
 
 alias next="npx create-next-app@latest"
 
@@ -127,6 +132,23 @@ export REQUESTS_CA_BUNDLE=${CERT_PATH}
 
 # Startup TMUX and attach session if it exists
 tmux attach -t 0 || tmux new -s 0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
