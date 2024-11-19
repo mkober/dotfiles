@@ -42,10 +42,12 @@ alias gta="git add"
 alias gtc="git commit -am"
 alias gto="git checkout"
 alias gtob="git checkout -b"
-
 alias git-remove="git_remove_file"
 alias git-status="git_status_check"
 alias git-sync="git_sync_repos"
+
+# Tmux T&A
+alias ta="tmux attach"
 
 # Too many secrets
 alias evt="~/Repos/mkober/vault-tec/run.sh encrypt"
@@ -130,8 +132,8 @@ export CERT_PATH=$(python3 -m certifi)
 export SSL_CERT_FILE=${CERT_PATH}
 export REQUESTS_CA_BUNDLE=${CERT_PATH}
 
-# Startup TMUX and attach session if it exists
-tmux attach -t 0 || tmux new -s 0
+
+
 
 
 
