@@ -68,6 +68,7 @@ alias setup="cd ~/Repos/mkober/ubuntu-setup"
 alias pkh="cd ~/Repos/pkh"
 alias pkh-dev="export envName=dev01"
 alias pkh-sand="export envName=sand01"
+alias pkh-stage="export envName=stage01"
 alias pkh-npm="npm login --scope=@projectkittyhawk --auth-type=legacy --registry=https://npm.pkg.github.com"
 
 # Needed for WSL to open URLs in Windows Browser
@@ -130,13 +131,26 @@ export CLUTTER_SCALE=1.5
 export GIT_EDITOR=nvim
 export VISUAL=nvim
 export EDITOR="$VISUAL"
-export PATH="$PATH:/usr/local/bin:/home/mkober/.local/bin"
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+
+export PATH="/usr/local/bin:/home/mkober/.local/bin:$PYENV_ROOT/shims:$PATH"
 
 export CERT_PATH=$(python3 -m certifi)
 export SSL_CERT_FILE=${CERT_PATH}
 export REQUESTS_CA_BUNDLE=${CERT_PATH}
 
+eval "$(pyenv init --path)"
 clear
+
+
+
+
+
+
+
+
+
 
 
 
