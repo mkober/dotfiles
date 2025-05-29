@@ -250,7 +250,7 @@ automatically-unhide-macos-hidden-apps = false
 
 [[on-window-detected]]
     if.app-id = 'com.spotify.client'
-    run = "move-node-to-workspace S"
+    run = "move-node-to-workspace M"
 
 [[on-window-detected]]
     if.app-id = 'com.microsoft.Excel'
@@ -266,19 +266,19 @@ automatically-unhide-macos-hidden-apps = false
 
 [[on-window-detected]]
     if.app-id = 'com.microsoft.Outlook'
-    run = "move-node-to-workspace M"
+    run = "move-node-to-workspace O"
 
 [[on-window-detected]]
     if.app-id = 'com.microsoft.teams2'
-    run = "move-node-to-workspace M"
+    run = "move-node-to-workspace O"
 
 [[on-window-detected]]
     if.app-id = 'com.tinyspeck.slackmacgap'
-    run = "move-node-to-workspace M"
+    run = "move-node-to-workspace O"
 
 [[on-window-detected]]
     if.app-id = 'com.apple.MobileSMS'
-    run = "move-node-to-workspace M"
+    run = "move-node-to-workspace O"
 
 [[on-window-detected]]
     if.app-id = 'org.gimp.gimp-3.0'
@@ -286,7 +286,7 @@ automatically-unhide-macos-hidden-apps = false
 
 [[on-window-detected]]
     if.app-id = 'org.inkscape.Inkscape'
-    run = "move-node-to-workspace I"
+    run = "move-node-to-workspace G"
 
 [[on-window-detected]]
     if.app-id = 'org.audacityteam.audacity'
@@ -300,4 +300,4 @@ automatically-unhide-macos-hidden-apps = false
     T = '^built-in retina display$'
     C = '^built-in retina display$'
     B = ['^dell S3220dgf$','^built-in retina display$']
-    M = ['^dell u2417h$','^built-in retina display$']
+    O = ['^dell u2417h$','^built-in retina display$']
