@@ -87,6 +87,7 @@ P.S. You can delete this when you're done too. It's your config now! :)
 -- Set <space> as the leader key
 -- See `:help mapleader`
 --  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
+vim.deprecate = function() end
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
@@ -1080,4 +1081,3 @@ require('lazy').setup({
 --
 -- local orig_notify = vim.notify
 --
-vim.deprecate = function() end
