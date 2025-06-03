@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# Load the referenced functions
-source ~/.bash_functions
-
 # Single character quick hits
 alias l="ls -la"
 alias c="clear"
@@ -16,6 +13,7 @@ alias vim="nvim"
 
 # Quick Python
 alias python="python3"
+alias pip="pip3"
 alias py="python3"
 alias pyv="source ~/.venv/bin/activate"
 alias pyvm="python -m venv .venv"
@@ -62,18 +60,14 @@ alias repos="cd ~/Repos"
 alias dot="cd ~/Repos/mkober/dotfiles"
 alias cloudbuild="cd ~/Repos/mkober/cloudbuild"
 alias fancy="cd ~/Repos/mkober/fancyrabbit"
-alias setup="cd ~/Repos/mkober/ubuntu-setup"
 
 # The day job
 alias pkh="cd ~/Repos/pkh"
 alias pkh-dev="export envName=dev01"
 alias pkh-sand="export envName=sand01"
 alias pkh-stage="export envName=stage01"
+alias pkh-prod="export envName=prod01"
 alias pkh-npm="npm login --scope=@projectkittyhawk --auth-type=legacy --registry=https://npm.pkg.github.com"
-
-# Needed for WSL to open URLs in Windows Browser
-# export BROWSER='/mnt/c/Program\ Files/BraveSoftware/Brave-Browser/Application/brave.exe'
-export BROWSER=wslview
 
 # Shortcuts for AWS Commands because they are long
 complete -C '/usr/local/bin/aws_completer' aws
@@ -105,43 +99,6 @@ alias kz="find /Library/LaunchAgents -name '*zscaler*' -exec launchctl unload {}
 
 # Docker Aliases
 #alias jq="docker run -it ghcr.io/jqlang/jq"
-
-alias next="npx create-next-app@latest"
-
-# Customize Bash Prompt
-git_branch () {
-  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'
-}
-
-HOST='\[\033[02;36m\]\h'; HOST='@'$HOST
-CUSTOM_USER='\[\033[01;31m\]$USER\[\033[01;32m\]'
-LOCATION=' \[\033[01;32m\]`pwd `'
-BRANCH=' \[\033[00;33m\]($(git_branch))\[\033[00m\]\n\[\033[1;33m\]-> \[\033[0m\] '
-PS1=$CUSTOM_USER$HOST$LOCATION$BRANCH
-
-if [[ $OSTYPE == 'darwin'* ]]; then
-  export VAULT_PATH="/Users/mkoberlein/Vault"
-else
-  export VAULT_PATH="/home/mkober/Vault"
-fi
-
-export GDK_DPI_SCALE=1.5
-export GDK_SCALE=1.5
-export CLUTTER_SCALE=1.5
-export GIT_EDITOR=nvim
-export VISUAL=nvim
-export EDITOR="$VISUAL"
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-
-export PATH="/usr/local/bin:/home/mkober/.local/bin:$PYENV_ROOT/shims:$PATH"
-
-export CERT_PATH=$(python3 -m certifi)
-export SSL_CERT_FILE=${CERT_PATH}
-export REQUESTS_CA_BUNDLE=${CERT_PATH}
-
-eval "$(pyenv init --path)"
-clear
 
 
 
