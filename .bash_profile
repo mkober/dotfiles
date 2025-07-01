@@ -45,3 +45,8 @@ export NVM_DIR="$HOME/.nvm"
 [ -f "${HOME}/.iterm2_shell_integration.bash" ] && source "${HOME}/.iterm2_shell_integration.bash"
 
 clear
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/mkoberlein/.lmstudio/bin"
+# End of LM Studio CLI section
+
