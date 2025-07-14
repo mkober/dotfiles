@@ -251,7 +251,7 @@ automatically-unhide-macos-hidden-apps = false
 
 [[on-window-detected]]
     if.app-id = 'com.postmanlabs.mac'
-    run = "move-node-to-workspace B"
+    run = "move-node-to-workspace P"
 
 [[on-window-detected]]
     if.app-id = 'com.spotify.client'
@@ -314,5 +314,6 @@ automatically-unhide-macos-hidden-apps = false
     C = '^built-in retina display$'
     A = '^built-in retina display$'
     F = '^built-in retina display$'
+    P = '^built-in retina display$'
     B = ['^dell S3220dgf$','^built-in retina display$']
     O = ['^dell u2417h$','^built-in retina display$']
