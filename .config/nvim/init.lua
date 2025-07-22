@@ -307,7 +307,7 @@ vim.api.nvim_create_autocmd('FileType', {
 
 -- Auto-fold method blocks on file open
 vim.api.nvim_create_autocmd('BufReadPost', {
-  pattern = { '*.js', '*.ts', '*.jsx', '*.tsx', '*.py', '*.lua', '*.java', '*.c', '*.cpp', '*.cs', '*.go', '*.rs' },
+  pattern = { '*.js', '*.ts', '*.jsx', '*.tsx', '*.py', '*.lua', '*.java', '*.c', '*.cpp', '*.cs', '*.go', '*.rs', '*.swift', '*.kt', '*.gd' },
   callback = function()
     -- Wait for treesitter to parse, then apply folding
     vim.defer_fn(function()
@@ -851,6 +851,91 @@ require('lazy').setup({
         -- Python
         pyright = {},
         
+        -- Go
+        gopls = {
+          settings = {
+            gopls = {
+              gofumpt = true,
+              codelenses = {
+                gc_details = false,
+                generate = true,
+                regenerate_cgo = true,
+                run_govulncheck = true,
+                test = true,
+                tidy = true,
+                upgrade_dependency = true,
+                vendor = true,
+              },
+              hints = {
+                assignVariableTypes = true,
+                compositeLiteralFields = true,
+                compositeLiteralTypes = true,
+                constantValues = true,
+                functionTypeParameters = true,
+                parameterNames = true,
+                rangeVariableTypes = true,
+              },
+              analyses = {
+                fieldalignment = true,
+                nilness = true,
+                unusedparams = true,
+                unusedwrite = true,
+                useany = true,
+              },
+              usePlaceholders = true,
+              completeUnimported = true,
+              staticcheck = true,
+              directoryFilters = { "-.git", "-.vscode", "-.idea", "-.vscode-test", "-node_modules" },
+              semanticTokens = true,
+            },
+          },
+        },
+        
+        -- C/C++
+        clangd = {
+          cmd = {
+            "clangd",
+            "--background-index",
+            "--clang-tidy",
+            "--header-insertion=iwyu",
+            "--completion-style=detailed",
+            "--function-arg-placeholders",
+            "--fallback-style=llvm",
+          },
+          init_options = {
+            usePlaceholders = true,
+            completeUnimported = true,
+            clangdFileStatus = true,
+          },
+        },
+        
+        -- Java
+        jdtls = {},
+        
+        -- Swift
+        sourcekit = {},
+        
+        -- Kotlin
+        kotlin_language_server = {},
+        
+        -- Godot GDScript
+        gdscript = {
+          settings = {
+            gdscript = {
+              completion = {
+                enable = true,
+                callSnippetPlaceholders = true,
+              },
+              linting = {
+                enable = true,
+              },
+              formatting = {
+                enable = true,
+              },
+            },
+          },
+        },
+        
         -- JSON
         jsonls = {},
         
@@ -903,6 +988,11 @@ require('lazy').setup({
         'lua_ls',
         'typescript-language-server', -- This provides ts_ls
         'pyright',
+        'gopls', -- Go language server
+        'clangd', -- C/C++ language server
+        'jdtls', -- Java language server
+        'sourcekit-lsp', -- Swift language server
+        'kotlin-language-server', -- Kotlin language server
         'json-lsp', -- This provides jsonls
         'html-lsp', -- This provides html
         'css-lsp', -- This provides cssls
@@ -914,6 +1004,13 @@ require('lazy').setup({
         'stylua', -- Used to format Lua code
         'prettier', -- Used to format JS, TS, HTML, CSS, JSON, etc.
         'prettierd', -- Faster prettier daemon
+        'gofumpt', -- Go formatter (better than gofmt)
+        'goimports', -- Go imports organizer
+        'clang-format', -- C/C++ formatter
+        'google-java-format', -- Java formatter
+        'swiftformat', -- Swift formatter
+        'ktlint', -- Kotlin formatter and linter
+        'gdtoolkit', -- GDScript formatter and linter
       }
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
@@ -966,6 +1063,13 @@ require('lazy').setup({
       end,
       formatters_by_ft = {
         lua = { 'stylua' },
+        go = { 'goimports', 'gofumpt' },
+        c = { 'clang-format' },
+        cpp = { 'clang-format' },
+        java = { 'google-java-format' },
+        swift = { 'swiftformat' },
+        kotlin = { 'ktlint' },
+        gdscript = { 'gdformat' },
         javascript = { 'prettierd', 'prettier', stop_after_first = true },
         typescript = { 'prettierd', 'prettier', stop_after_first = true },
         javascriptreact = { 'prettierd', 'prettier', stop_after_first = true },
@@ -1147,8 +1251,9 @@ require('lazy').setup({
     -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
     opts = {
       ensure_installed = { 
-        'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc',
-        'javascript', 'typescript', 'tsx', 'json', 'css', 'python', 'yaml', 'toml'
+        'bash', 'c', 'cpp', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc',
+        'javascript', 'typescript', 'tsx', 'json', 'css', 'python', 'yaml', 'toml', 'go',
+        'java', 'swift', 'kotlin', 'gdscript'
       },
       -- Autoinstall languages that are not installed
       auto_install = true,
