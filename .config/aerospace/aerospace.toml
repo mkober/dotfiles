@@ -153,6 +153,7 @@ automatically-unhide-macos-hidden-apps = false
     alt-z = 'workspace Z'
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
+    alt-shift-0 = 'move-node-to-workspace 0'
     alt-shift-1 = 'move-node-to-workspace 1'
     alt-shift-2 = 'move-node-to-workspace 2'
     alt-shift-3 = 'move-node-to-workspace 3'
@@ -259,7 +260,7 @@ automatically-unhide-macos-hidden-apps = false
 
 [[on-window-detected]]
     if.app-id = 'com.spotify.client'
-    run = "move-node-to-workspace M"
+    run = "move-node-to-workspace S"
 
 [[on-window-detected]]
     if.app-id = 'com.microsoft.Excel'
@@ -299,7 +300,7 @@ automatically-unhide-macos-hidden-apps = false
 
 [[on-window-detected]]
     if.app-id = 'org.audacityteam.audacity'
-    run = "move-node-to-workspace M"
+    run = "move-node-to-workspace A"
 
 [[on-window-detected]]
     if.app-id = 'org.blenderfoundation.blender'
@@ -311,7 +312,7 @@ automatically-unhide-macos-hidden-apps = false
 
 [[on-window-detected]]
     if.app-id = 'com.apple.finder'
-    run = "move-node-to-workspace F"
+    run = "move-node-to-workspace 9"
 
 [workspace-to-monitor-force-assignment]
     T = '^built-in retina display$'

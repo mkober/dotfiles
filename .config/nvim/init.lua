@@ -91,6 +91,28 @@ vim.deprecate = function() end
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
+-- Function to create manual folds
+function _G.create_fold(motion_type)
+  local start_line, end_line
+  
+  if motion_type == 'v' or motion_type == 'V' then
+    -- Visual mode selection
+    start_line = vim.fn.line("'<")
+    end_line = vim.fn.line("'>")
+  elseif motion_type == 'line' then
+    -- Line-wise motion (like zfj, zfk)
+    start_line = vim.fn.line("'[")
+    end_line = vim.fn.line("']")
+  else
+    -- Character-wise motion
+    start_line = vim.fn.line("'[")
+    end_line = vim.fn.line("']")
+  end
+  
+  -- Create the fold
+  vim.cmd(start_line .. ',' .. end_line .. 'fold')
+end
+
 -- Set to true if you have a Nerd Font installed and selected in the terminal
 vim.g.have_nerd_font = false
 
@@ -161,6 +183,12 @@ vim.opt.scrolloff = 10
 -- instead raise a dialog asking if you wish to save the current file(s)
 -- See `:help 'confirm'`
 vim.opt.confirm = true
+
+-- Enable code folding
+vim.opt.foldmethod = 'manual'
+vim.opt.foldlevel = 99 -- Start with all folds open
+vim.opt.foldlevelstart = 99
+vim.opt.foldenable = true
 
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
@@ -233,6 +261,15 @@ vim.keymap.set('n', '<leader>vh', ':split<CR><C-W>j')
 -- close window
 vim.keymap.set('n', '<leader>q', ':q<CR>')
 
+-- Code folding keymaps
+vim.keymap.set('n', 'zf', '<cmd>set operatorfunc=v:lua.create_fold<CR>g@', { desc = 'Create fold' })
+vim.keymap.set('v', 'zf', '<Esc><cmd>lua create_fold(vim.fn.visualmode())<CR>', { desc = 'Create fold from selection' })
+vim.keymap.set('n', 'zo', 'zo', { desc = 'Open fold under cursor' })
+vim.keymap.set('n', 'zc', 'zc', { desc = 'Close fold under cursor' })
+vim.keymap.set('n', 'za', 'za', { desc = 'Toggle fold under cursor' })
+vim.keymap.set('n', 'zR', 'zR', { desc = 'Open all folds' })
+vim.keymap.set('n', 'zM', 'zM', { desc = 'Close all folds' })
+
 -- NOTE: Some terminals have colliding keymaps or are not able to send distinct keycodes
 -- vim.keymap.set("n", "<C-S-h>", "<C-w>H", { desc = "Move window to the left" })
 -- vim.keymap.set("n", "<C-S-l>", "<C-w>L", { desc = "Move window to the right" })
@@ -293,7 +330,23 @@ require('lazy').setup({
   'tpope/vim-rhubarb',
   'folke/which-key.nvim',
   'Mofiqul/dracula.nvim',
-  'github/copilot.vim',
+  {
+    'github/copilot.vim',
+    config = function()
+      -- Set Copilot to use Tab for accepting suggestions
+      vim.keymap.set('i', '<Tab>', 'copilot#Accept("\\<CR>")', {
+        expr = true,
+        replace_keycodes = false,
+        desc = 'Accept Copilot suggestion'
+      })
+      vim.g.copilot_no_tab_map = true
+      
+      -- Alternative keybindings for Copilot
+      vim.keymap.set('i', '<C-]>', '<Plug>(copilot-next)', { desc = 'Next Copilot suggestion' })
+      vim.keymap.set('i', '<C-[>', '<Plug>(copilot-previous)', { desc = 'Previous Copilot suggestion' })
+      vim.keymap.set('i', '<C-\\>', '<Plug>(copilot-dismiss)', { desc = 'Dismiss Copilot suggestion' })
+    end,
+  },
 
   {
     'jiaoshijie/undotree',
@@ -742,18 +795,29 @@ require('lazy').setup({
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
-        -- clangd = {},
-        -- gopls = {},
-        -- pyright = {},
-        -- rust_analyzer = {},
-        -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
-        --
-        -- Some languages (like typescript) have entire language plugins that can be useful:
-        --    https://github.com/pmizio/typescript-tools.nvim
-        --
-        -- But for many setups, the LSP (`ts_ls`) will work just fine
-        -- ts_ls = {},
-        --
+        -- JavaScript/TypeScript
+        ts_ls = {},
+        
+        -- Python
+        pyright = {},
+        
+        -- JSON
+        jsonls = {},
+        
+        -- HTML
+        html = {},
+        
+        -- CSS
+        cssls = {},
+        
+        -- Bash
+        bashls = {},
+        
+        -- YAML
+        yamlls = {},
+        
+        -- Markdown
+        marksman = {},
 
         lua_ls = {
           -- cmd = { ... },
@@ -892,31 +956,17 @@ require('lazy').setup({
     --- @type blink.cmp.Config
     opts = {
       keymap = {
-        -- 'default' (recommended) for mappings similar to built-in completions
-        --   <c-y> to accept ([y]es) the completion.
-        --    This will auto-import if your LSP supports it.
-        --    This will expand snippets if the LSP sent a snippet.
-        -- 'super-tab' for tab to accept
-        -- 'enter' for enter to accept
-        -- 'none' for no mappings
-        --
-        -- For an understanding of why the 'default' preset is recommended,
-        -- you will need to read `:help ins-completion`
-        --
-        -- No, but seriously. Please read `:help ins-completion`, it is really good!
-        --
-        -- All presets have the following mappings:
-        -- <tab>/<s-tab>: move to right/left of your snippet expansion
-        -- <c-space>: Open menu or open docs if already open
-        -- <c-n>/<c-p> or <up>/<down>: Select next/previous item
-        -- <c-e>: Hide menu
-        -- <c-k>: Toggle signature help
-        --
-        -- See :h blink-cmp-config-keymap for defining your own keymap
-        preset = 'default',
-
-        -- For more advanced Luasnip keymaps (e.g. selecting choice nodes, expansion) see:
-        --    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
+        preset = 'none', -- Disable default keymaps to avoid conflicts with Copilot
+        ['<C-space>'] = { 'show', 'show_documentation', 'hide_documentation' },
+        ['<C-e>'] = { 'hide' },
+        ['<C-y>'] = { 'select_and_accept' },
+        ['<C-n>'] = { 'select_next', 'fallback' },
+        ['<C-p>'] = { 'select_prev', 'fallback' },
+        ['<Up>'] = { 'select_prev', 'fallback' },
+        ['<Down>'] = { 'select_next', 'fallback' },
+        ['<C-k>'] = { 'snippet_forward', 'fallback' },
+        ['<C-j>'] = { 'snippet_backward', 'fallback' },
+        -- Tab is left free for Copilot
       },
 
       appearance = {
@@ -926,9 +976,21 @@ require('lazy').setup({
       },
 
       completion = {
-        -- By default, you may press `<c-space>` to show the documentation.
-        -- Optionally, set `auto_show = true` to show the documentation after a delay.
-        documentation = { auto_show = false, auto_show_delay_ms = 500 },
+        -- Show completion menu automatically
+        trigger = { 
+          show_on_trigger_character = true,
+          show_on_keyword = true,
+        },
+        -- Show documentation automatically when selecting items
+        documentation = { 
+          auto_show = true, 
+          auto_show_delay_ms = 200,
+        },
+        menu = {
+          draw = {
+            columns = { { "label", "label_description", gap = 1 }, { "kind_icon", "kind" } },
+          },
+        },
       },
 
       sources = {
