@@ -272,6 +272,11 @@ vim.keymap.set('n', 'za', 'za', { desc = 'Toggle fold under cursor' })
 vim.keymap.set('n', 'zR', 'zR', { desc = 'Open all folds' })
 vim.keymap.set('n', 'zM', 'zM', { desc = 'Close all folds' })
 
+-- Git blame keymaps
+vim.keymap.set('n', '<leader>gb', ':Git blame<CR>', { desc = 'Git blame current file' })
+vim.keymap.set('n', '<leader>gB', ':Git blame --date=relative<CR>', { desc = 'Git blame with relative dates' })
+vim.keymap.set('v', '<leader>gb', ':Git blame<CR>', { desc = 'Git blame selection' })
+
 -- NOTE: Some terminals have colliding keymaps or are not able to send distinct keycodes
 -- vim.keymap.set("n", "<C-S-h>", "<C-w>H", { desc = "Move window to the left" })
 -- vim.keymap.set("n", "<C-S-l>", "<C-w>L", { desc = "Move window to the right" })
@@ -423,6 +428,33 @@ require('lazy').setup({
         topdelete = { text = '‾' },
         changedelete = { text = '~' },
       },
+      current_line_blame = true, -- Toggle with :Gitsigns toggle_current_line_blame
+      current_line_blame_opts = {
+        virt_text = true,
+        virt_text_pos = 'eol', -- 'eol' | 'overlay' | 'right_align'
+        delay = 300,
+        ignore_whitespace = false,
+      },
+      on_attach = function(bufnr)
+        local gs = package.loaded.gitsigns
+        
+        -- Git blame keymaps
+        vim.keymap.set('n', '<leader>tb', gs.toggle_current_line_blame, { buffer = bufnr, desc = 'Toggle git blame line' })
+        vim.keymap.set('n', '<leader>hb', function() gs.blame_line{full=true} end, { buffer = bufnr, desc = 'Git blame line (full)' })
+        
+        -- Git hunk navigation
+        vim.keymap.set('n', ']c', function()
+          if vim.wo.diff then return ']c' end
+          vim.schedule(function() gs.next_hunk() end)
+          return '<Ignore>'
+        end, {expr=true, buffer = bufnr, desc = 'Next git hunk'})
+        
+        vim.keymap.set('n', '[c', function()
+          if vim.wo.diff then return '[c' end
+          vim.schedule(function() gs.prev_hunk() end)
+          return '<Ignore>'
+        end, {expr=true, buffer = bufnr, desc = 'Previous git hunk'})
+      end,
     },
   },
 
@@ -866,12 +898,23 @@ require('lazy').setup({
       --
       -- You can add other tools here that you want Mason to install
       -- for you, so that they are available from within Neovim.
-      local ensure_installed = vim.tbl_keys(servers or {})
-      vim.list_extend(ensure_installed, {
+      local ensure_installed = {
+        -- Language servers (using Mason package names)
+        'lua_ls',
+        'typescript-language-server', -- This provides ts_ls
+        'pyright',
+        'json-lsp', -- This provides jsonls
+        'html-lsp', -- This provides html
+        'css-lsp', -- This provides cssls
+        'bash-language-server', -- This provides bashls
+        'yaml-language-server', -- This provides yamlls
+        'marksman',
+        
+        -- Formatters
         'stylua', -- Used to format Lua code
         'prettier', -- Used to format JS, TS, HTML, CSS, JSON, etc.
         'prettierd', -- Faster prettier daemon
-      })
+      }
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
       require('mason-lspconfig').setup {
