@@ -991,7 +991,6 @@ require('lazy').setup({
         'gopls', -- Go language server
         'clangd', -- C/C++ language server
         'jdtls', -- Java language server
-        'sourcekit-lsp', -- Swift language server
         'kotlin-language-server', -- Kotlin language server
         'json-lsp', -- This provides jsonls
         'html-lsp', -- This provides html
@@ -1008,7 +1007,6 @@ require('lazy').setup({
         'goimports', -- Go imports organizer
         'clang-format', -- C/C++ formatter
         'google-java-format', -- Java formatter
-        'swiftformat', -- Swift formatter
         'ktlint', -- Kotlin formatter and linter
         'gdtoolkit', -- GDScript formatter and linter
       }
