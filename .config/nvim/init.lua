@@ -185,10 +185,12 @@ vim.opt.scrolloff = 10
 vim.opt.confirm = true
 
 -- Enable code folding
-vim.opt.foldmethod = 'manual'
-vim.opt.foldlevel = 99 -- Start with all folds open
-vim.opt.foldlevelstart = 99
+vim.opt.foldmethod = 'expr'
+vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
+vim.opt.foldlevel = 1 -- Start with methods folded (level 0 = all folded, level 1 = classes open/methods folded)
+vim.opt.foldlevelstart = 1
 vim.opt.foldenable = true
+vim.opt.foldcolumn = '1' -- Show fold column
 
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
@@ -295,6 +297,22 @@ vim.api.nvim_create_autocmd('FileType', {
   pattern = 'text',
   callback = function()
     vim.treesitter.stop()
+  end,
+})
+
+-- Auto-fold method blocks on file open
+vim.api.nvim_create_autocmd('BufReadPost', {
+  pattern = { '*.js', '*.ts', '*.jsx', '*.tsx', '*.py', '*.lua', '*.java', '*.c', '*.cpp', '*.cs', '*.go', '*.rs' },
+  callback = function()
+    -- Wait for treesitter to parse, then apply folding
+    vim.defer_fn(function()
+      if vim.bo.filetype ~= 'text' then
+        vim.opt_local.foldmethod = 'expr'
+        vim.opt_local.foldexpr = 'nvim_treesitter#foldexpr()'
+        vim.opt_local.foldlevel = 1
+        vim.cmd('normal! zx') -- Update folds
+      end
+    end, 50)
   end,
 })
 
@@ -1085,7 +1103,10 @@ require('lazy').setup({
     main = 'nvim-treesitter.configs', -- Sets main module to use for opts
     -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
     opts = {
-      ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc' },
+      ensure_installed = { 
+        'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc',
+        'javascript', 'typescript', 'tsx', 'json', 'css', 'python', 'yaml', 'toml'
+      },
       -- Autoinstall languages that are not installed
       auto_install = true,
       highlight = {
@@ -1096,6 +1117,10 @@ require('lazy').setup({
         additional_vim_regex_highlighting = { 'ruby' },
       },
       indent = { enable = true, disable = { 'ruby' } },
+      -- Enable folding based on treesitter
+      fold = {
+        enable = true,
+      },
     },
     -- There are additional nvim-treesitter modules that you can use to interact
     -- with nvim-treesitter. You should go explore a few and see what interests you:
